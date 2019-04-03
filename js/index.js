@@ -1,6 +1,9 @@
 $(function () {
-    // 动态生成轮播图结构
-    $.ajax({
+  banner();
+})
+function banner(){
+      // 动态生成轮播图结构
+      $.ajax({
         type: 'get',
         url: 'http://157.122.54.189:9094/api/public/v1/home/swiperdata',
         dataType: 'json',
@@ -20,4 +23,4 @@ $(function () {
 
         }
     })
-})
+}
