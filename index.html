@@ -52,47 +52,7 @@
                 </a>
             </div>
             <div class="pyg_goodsList">
-                <div class="pyg_goodsItem">
-                    <img src="http://image4.suning.cn/uimg/cms/img/149559219946350066.png" alt="" class="titleImg">
-                    <div class="pyg_goods">
-                        <a href="">
-                            <img src="http://image1.suning.cn/uimg/b2c/newcatentries/0070115264-000000000138687347_1_400x400.jpg"
-                                alt="">
-                            <div class="goods_desc mui-ellipsis-2">博世刹车片1341 标致307/308/408/雪铁龙世嘉C4L帝豪EC7比亚迪G6 博世正品 官方授权
-                                后刹车片 后片</div>
-                            <div class="goods_price">￥ 130</div>
-                        </a>
-                        <a href="" type="button" class="goods_similar mui-btn mui-btn-primary mui-btn-outlined">找相似</a>
-                    </div>
-                    <div class="pyg_goods">
-                        <a href="">
-                            <img src="http://image1.suning.cn/uimg/b2c/newcatentries/0070115264-000000000138687347_1_400x400.jpg"
-                                alt="">
-                            <div class="goods_desc mui-ellipsis-2">博世刹车片1341 标致307/308/408/雪铁龙世嘉C4L帝豪EC7比亚迪G6 博世正品 官方授权
-                                后刹车片 后片</div>
-                            <div class="goods_price">￥ 130</div>
-                        </a>
-                        <a href="" type="button" class="goods_similar mui-btn mui-btn-primary mui-btn-outlined">找相似</a>
-                    </div>
-                    <div class="pyg_goods">
-                        <a href="">
-                            <img src="http://image1.suning.cn/uimg/b2c/newcatentries/0070115264-000000000138687347_1_400x400.jpg"
-                                alt="">
-                                <div class="goods_desc mui-ellipsis-2">博世刹车片1341 标致307/308/408/雪铁龙世嘉C4L帝豪EC7比亚迪G6 博世正品 官方授权 后刹车片 后片</div>
-                                <div class="goods_price">￥ 130</div>
-                        </a>
-                        <a href="" type="button" class="goods_similar mui-btn mui-btn-primary mui-btn-outlined">找相似</a>
-                    </div>
-                    <div class="pyg_goods">
-                        <a href="">
-                            <img src="http://image1.suning.cn/uimg/b2c/newcatentries/0070115264-000000000138687347_1_400x400.jpg"
-                                alt="">
-                                <div class="goods_desc mui-ellipsis-2">博世刹车片1341 标致307/308/408/雪铁龙世嘉C4L帝豪EC7比亚迪G6 博世正品 官方授权 后刹车片 后片</div>
-                                <div class="goods_price">￥ 130</div>
-                        </a>
-                        <a href="" type="button" class="goods_similar mui-btn mui-btn-primary mui-btn-outlined">找相似</a>
-                    </div>
-                </div>
+                
             </div>
         </div>
         <div class="pyg_footer">
@@ -131,6 +91,24 @@
     {{each data value index}}
     <div class="mui-indicator {{index==0?'mui-active':''}}"></div>
     {{/each}}
+</script>
+<script type="text/template" id="goodsTemp">
+    {{each data value index}}
+    <div class="pyg_goodsItem">
+            <img src="{{value.group_img}}" alt="" class="titleImg">
+            {{each value.goods value index}}
+            <div class="pyg_goods">
+                <a href="javascript:;">
+                    <img src="{{value.goods_small_logo}}"
+                        alt="">
+                    <div class="goods_desc mui-ellipsis-2">{{value.goods_name}}</div>
+                    <div class="goods_price">￥ {{value.goods_price}}</div>
+                </a>
+                <a href="javascript:;" type="button" class="goods_similar mui-btn mui-btn-primary mui-btn-outlined">找相似</a>
+            </div>
+            {{/each}}
+     </div>
+     {{/each}}
 </script>
 <script src="./js/index.js"></script>
 

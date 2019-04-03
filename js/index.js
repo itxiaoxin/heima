@@ -1,18 +1,18 @@
 $(function () {
-  banner();
+    banner();
+   goodsList();
 })
-function banner(){
-      // 动态生成轮播图结构
-      $.ajax({
+
+ // 动态生成轮播图结构
+function banner() {   
+    $.ajax({
         type: 'get',
         url: 'http://157.122.54.189:9094/api/public/v1/home/swiperdata',
         dataType: 'json',
         success: function (result) {
-            console.log(result);
             if (result.meta.status == 200) {
                 var html = template('pyg_bannerTemp', result);
                 var indicatorHtml = template('pyg_indicatorTemp', result)
-                // console.log(html);
                 $('.pyg_banner .pyg_slider').html(html)
                 $('.pyg_banner .pyg_indicator').html(indicatorHtml)
                 mui('.mui-slider').slider({
@@ -21,6 +21,19 @@ function banner(){
                 });
             }
 
+        }
+    })
+}
+
+//动态加载商品列表
+function goodsList(){
+    $.ajax({
+        type: 'get',
+        url:'http://157.122.54.189:9094/api/public/v1/home/goodslist',
+        dataType:'json',
+        success:function(result){
+            var html=template('goodsTemp',result);
+            $('.pyg_goodsList').html(html);
         }
     })
 }
