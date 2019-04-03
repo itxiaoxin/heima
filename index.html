@@ -6,20 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>my品优购</title>
+    <!-- 引入样式初始化文件 -->
     <link rel="stylesheet" href="./styles/reset.css">
+    <!-- 引入MUI框架的样式文件 -->
     <link rel="stylesheet" href="./lib/mui/css/mui.min.css">
+    <!-- 引入MUI额外字体图标的样式文件 -->
     <link rel="stylesheet" href="./lib/mui/css/muie.css">
+    <!-- 引入首页样式文件 -->
     <link rel="stylesheet" href="./styles/index.css">
 </head>
 
 <body>
     <div class="layout">
+        <!-- 头部搜索框部分 -->
         <div class="pyg_header">
             <div class="mui-input-row mui-search">
                 <input type="search" class="mui-input-clear" placeholder="">
             </div>
         </div>
+        <!-- 主体内容部分 -->
         <div class="pyg_content">
+            <!-- 轮播图部分 -->
             <div class="pyg_banner">
                 <div class="mui-slider">
                     <div class="mui-slider-group mui-slider-loop pyg_slider">
@@ -30,6 +37,7 @@
                     </div>
                 </div>
             </div>
+            <!-- 首页导航项部分 -->
             <div class="pyg_nav">
                 <a href="">
                     <img src="https://image2.suning.cn/uimg/cms/img/155411189774023862.gif?format=_is_120w_120h" alt="">
@@ -51,10 +59,12 @@
                     <div>苏宁生鲜</div>
                 </a>
             </div>
+            <!-- 商品列表部分 -->
             <div class="pyg_goodsList">
                 
             </div>
         </div>
+        <!-- 底部导航部分 -->
         <div class="pyg_footer">
             <nav class="mui-bar mui-bar-tab">
                 <a class="mui-tab-item mui-active" href="#tabbar">
@@ -110,6 +120,7 @@
      </div>
      {{/each}}
 </script>
+<script src="./js/common.js"></script>
 <script src="./js/index.js"></script>
 
 </html>
