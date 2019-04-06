@@ -1,3 +1,96 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+ol,
+ul {
+  list-style: none;
+}
 .layout {
   width: 100vw;
   height: 100vh;
@@ -15,55 +108,78 @@
   overflow: scroll;
   flex: 1;
 }
-.pyg_content .pyg_nav {
+.loadding::before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: .5;
+  content: "";
+  z-index: 100;
+}
+.loadding::after {
+  font: normal normal normal 14px/1 FontAwesome;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  margin-left: -50px;
+  font-size: 100px;
+  color: #0094ff;
+  content: "\f013";
+  z-index: 101;
+  animation: fa-spin 1s infinite linear;
+}
+.pyg_nav {
   padding: 15px;
   display: flex;
   background-color: #fff;
 }
-.pyg_content .pyg_nav > a {
+.pyg_nav > a {
   flex: 1;
   text-align: center;
   font-size: 13px;
   color: #333;
 }
-.pyg_content .pyg_nav > a > img {
+.pyg_nav > a > img {
   width: 50%;
   display: inline-block;
 }
-.pyg_content .pyg_goodsList {
+.pyg_goodsList {
   padding: 10px;
 }
-.pyg_content .pyg_goodsList .pyg_goodsItem {
+.pyg_goodsList .pyg_goodsItem {
   overflow: hidden;
 }
-.pyg_content .pyg_goodsList .pyg_goodsItem .titleImg {
+.pyg_goodsList .pyg_goodsItem .titleImg {
   width: 100%;
   display: block;
 }
-.pyg_content .pyg_goodsList .pyg_goodsItem .pyg_goods {
+.pyg_goodsList .pyg_goodsItem .pyg_goods {
   width: 49%;
   float: left;
   margin-top: 5px;
 }
-.pyg_content .pyg_goodsList .pyg_goodsItem .pyg_goods img {
+.pyg_goodsList .pyg_goodsItem .pyg_goods img {
   width: 100%;
   display: block;
 }
-.pyg_content .pyg_goodsList .pyg_goodsItem .pyg_goods .goods_desc {
+.pyg_goodsList .pyg_goodsItem .pyg_goods .goods_desc {
   font-size: 13px;
   color: #333;
   margin: 5px 0;
 }
-.pyg_content .pyg_goodsList .pyg_goodsItem .pyg_goods .goods_price {
+.pyg_goodsList .pyg_goodsItem .pyg_goods .goods_price {
   font-size: 16px;
   color: #f00;
 }
-.pyg_content .pyg_goodsList .pyg_goodsItem .pyg_goods .goods_similar {
+.pyg_goodsList .pyg_goodsItem .pyg_goods .goods_similar {
   width: 80%;
   margin: 0 auto;
   display: block;
 }
-.pyg_content .pyg_goodsList .pyg_goodsItem .pyg_goods:nth-of-type(even) {
+.pyg_goodsList .pyg_goodsItem .pyg_goods:nth-of-type(even) {
   margin-left: 2%;
 }
 .pyg_footer {

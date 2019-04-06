@@ -1,87 +1,68 @@
-.layout {
-    width: 100vw;
-    height: 100vh;
-    max-width: 640px;
-    background-color: #eee;
-    margin: 0 auto;
+@import './reset.less';
+@import './common.less';
+.pyg_nav {
+    padding: 15px;
     display: flex;
-    flex-direction: column;
-}
+    background-color: #fff;
 
-.pyg_header {
-    height: 45px;
-    padding: 4px;
-}
+    >a {
+        flex: 1;
+        text-align: center;
+        font-size: 13px;
+        color: #333;
 
-.pyg_content {
-    overflow: scroll;
-    flex: 1;
-
-    .pyg_nav {
-        padding: 15px;
-        display: flex;
-        background-color: #fff;
-
-        >a {
-            flex: 1;
-            text-align: center;
-            font-size: 13px;
-            color: #333;
-
-            >img {
-                width: 50%;
-                display: inline-block;
-            }
+        >img {
+            width: 50%;
+            display: inline-block;
         }
     }
+}
 
-    .pyg_goodsList {
-        padding: 10px;
+.pyg_goodsList {
+    padding: 10px;
 
-        .pyg_goodsItem {
-            overflow: hidden;
+    .pyg_goodsItem {
+        overflow: hidden;
 
-            .titleImg {
+        .titleImg {
+            width: 100%;
+            display: block;
+        }
+
+        .pyg_goods {
+            width: 49%;
+            float: left;
+            margin-top: 5px;
+
+            img {
                 width: 100%;
                 display: block;
             }
 
-            .pyg_goods {
-                width: 49%;
-                float: left;
-                margin-top: 5px;
-
-                img {
-                    width: 100%;
-                    display: block;
-                }
-
-                .goods_desc {
-                    font-size: 13px;
-                    color: #333;
-                    margin: 5px 0;
-                }
-
-                .goods_price {
-                    font-size: 16px;
-                    color: #f00;
-                }
-
-                .goods_similar {
-                    width: 80%;
-                    margin: 0 auto;
-                    display: block;
-                }
+            .goods_desc {
+                font-size: 13px;
+                color: #333;
+                margin: 5px 0;
             }
 
-            .pyg_goods:nth-of-type(even) {
-                margin-left: 2%;
+            .goods_price {
+                font-size: 16px;
+                color: #f00;
+            }
+
+            .goods_similar {
+                width: 80%;
+                margin: 0 auto;
+                display: block;
             }
         }
 
+        .pyg_goods:nth-of-type(even) {
+            margin-left: 2%;
+        }
     }
-}
 
+}
 .pyg_footer {
     height: 45px;
     background-color: #fff;
