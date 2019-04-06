@@ -115,6 +115,13 @@ ul {
 .pyg_footer .mui-tab-item {
   color: #333;
 }
+.pyg_footer {
+  height: 45px;
+  background-color: #fff;
+}
+.pyg_footer .mui-tab-item {
+  color: #333;
+}
 .loadding::before {
   position: fixed;
   top: 0;
@@ -190,6 +197,13 @@ ul {
   margin: 5px 0;
 }
 .pyg_content > .right > .cate > .cate_content > a > img {
+  width: 70%;
+  display: block;
+  text-align: center;
+  color: #333;
+  margin: 5px 0;
+}
+.pyg_content > .right > .cate > .cate_content > a > img > img {
   width: 70%;
   display: block;
   margin: 0 auto;
