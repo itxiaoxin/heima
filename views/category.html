@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../lib/mui/css/mui.min.css">
     <!-- 引入MUI额外字体图标的样式文件 -->
     <link rel="stylesheet" href="../lib/mui/css/muie.css">
+    <!-- 引入fontawesome字体图标的样式文件 -->
+    <link rel="stylesheet" href="../lib/fontawesome/css/font-awesome.css">
     <!-- 引入分类页面样式文件 -->
     <link rel="stylesheet" href="../styles/category.css">
 </head>
@@ -26,144 +28,12 @@
         <div class="pyg_content">
             <div class="left">
                 <ul>
-                    <li class="active">
-                        <a href="javascript:;">大家电</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">热门推荐</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">海外购</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">苏宁房产</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">大家电</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">热门推荐</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">海外购</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">苏宁房产</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">大家电</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">热门推荐</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">海外购</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">苏宁房产</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">大家电</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">热门推荐</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">海外购</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">苏宁房产</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">大家电</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">热门推荐</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">海外购</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">苏宁房产</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">大家电</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">热门推荐</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">海外购</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">苏宁房产</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">大家电</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">热门推荐</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">海外购</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">苏宁房产</a>
-                    </li>
                 </ul>
             </div>
             <div class="right">
-                <div class="cate">
-                    <div class="cate_title">电视</div>
-                    <div class="cate_content">
-                        <a>
-                            <img src="http://157.122.54.189:9094/full/2fb113b32f7a2b161f5ee4096c319afedc3fd5a1.jpg"
-                                alt="">
-                            <div>曲面电视</div>
-                        </a>
-                        <a>
-                            <img src="http://157.122.54.189:9094/full/2fb113b32f7a2b161f5ee4096c319afedc3fd5a1.jpg"
-                                alt="">
-                            <div>海信</div>
-                        </a>
-                        <a>
-                            <img src="http://157.122.54.189:9094/full/2fb113b32f7a2b161f5ee4096c319afedc3fd5a1.jpg"
-                                alt="">
-                            <div>海尔</div>
-                        </a>
-                        <a>
-                            <img src="http://157.122.54.189:9094/full/2fb113b32f7a2b161f5ee4096c319afedc3fd5a1.jpg"
-                                alt="">
-                            <div>3d</div>
-                        </a>
-                    </div>
-                </div>
-                <div class="cate">
-                    <div class="cate_title">空调</div>
-                    <div class="cate_content">
-                        <a>
-                            <img src="http://157.122.54.189:9094/full/2fb113b32f7a2b161f5ee4096c319afedc3fd5a1.jpg"
-                                alt="">
-                            <div>曲面电视</div>
-                        </a>
-                        <a>
-                            <img src="http://157.122.54.189:9094/full/2fb113b32f7a2b161f5ee4096c319afedc3fd5a1.jpg"
-                                alt="">
-                            <div>海信</div>
-                        </a>
-                        <a>
-                            <img src="http://157.122.54.189:9094/full/2fb113b32f7a2b161f5ee4096c319afedc3fd5a1.jpg"
-                                alt="">
-                            <div>海尔</div>
-                        </a>
-                        <a>
-                            <img src="http://157.122.54.189:9094/full/2fb113b32f7a2b161f5ee4096c319afedc3fd5a1.jpg"
-                                alt="">
-                            <div>3d</div>
-                        </a>
-                    </div>
-                </div>
+                <div class="cateList">
 
+                </div>
             </div>
         </div>
         <!-- 底部导航部分 -->
@@ -189,6 +59,29 @@
         </div>
     </div>
 </body>
+<script type="text/template" id="leftnavTemp">
+    {{each list value index}}
+    <li class="{{index==0?'active':''}}">
+        <a href="#" data-id="{{value.cat_id}}">{{value.cat_name}}</a>
+    </li>
+    {{/each}}
+</script>
+<script type="text/template" id="rightListTemp">
+    {{each children value index}}
+    <div class="cate">
+        <div class="cate_title">{{value.cat_name}}</div>
+        <div class="cate_content">
+        {{each value.children value index}}
+            <a>
+                <img src="http://157.122.54.189:9094{{value.cat_icon}}"
+                    alt="">
+                <div>{{value.cat_name}}</div>
+            </a>
+            {{/each}}
+        </div>
+    </div>
+    {{/each}}
+</script>
 <script src="../lib/mui/js/mui.min.js"></script>
 <script src="../lib/zepto/zepto.js"></script>
 <script src="../lib/arttemplate/template-web.js"></script>
