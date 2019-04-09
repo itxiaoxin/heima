@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>my品优购</title>
+    <title>my商品列表</title>
     <!-- 引入MUI框架的样式文件 -->
     <link rel="stylesheet" href="../lib/mui/css/mui.min.css">
     <!-- 引入MUI额外字体图标的样式文件 -->
@@ -18,13 +18,64 @@
 
 <body>
     <div class="layout">
-        <!-- 头部搜索框部分 -->
-        <header id="header" class="mui-bar mui-bar-nav pyg_header">
-			<h1 class="mui-title">搜索</h1>
-		<a class="mui-icon mui-icon-search mui-pull-right"></a></header>
         <!-- 主体内容部分 -->
         <div class="pyg_content">
-         
+            <!-- 侧滑导航根容器 -->
+            <div class="mui-off-canvas-wrap mui-draggable">
+                <!-- 菜单容器 -->
+                <aside class="mui-off-canvas-right">
+                    <!--mui-scroll是一个区域滚动容器，给它的父元素添加一个id="refreshContainer"，父元素就成为了一个下拉刷新容器-->
+                    <div id="refreshContainer" class="mui-scroll-wrapper">
+                        <div class="mui-scroll">
+                            <!-- 菜单具体展示内容 -->
+
+                        </div>
+                    </div>
+                </aside>
+                <!-- 主页面容器 -->
+                <div class="mui-inner-wrap">
+                    <!-- 主页面标题 -->
+                    <!-- 头部搜索框部分 -->
+                    <header id="header" class="mui-bar mui-bar-nav pyg_header">
+                        <h1 class="mui-title">搜索</h1>
+                        <a class="mui-icon mui-icon-search mui-pull-right" href="javascript:;"></a>
+                    </header>
+
+                    <div class="mui-content mui-scroll-wrapper">
+                        <div class="mui-scroll">
+                            <!-- 主界面具体展示内容 -->
+                            <ul class="goods_list">
+                                <li>
+                                    <a href="javascript:;">
+                                        <div>
+                                        <img src="../static/images/goods_thnmp.png" alt="">
+                                        </div>
+                                        <div>
+                                            <div class="mui-ellipsis">
+                                                海信(Hisense)LED55MU9600X3DUC 55英寸 4K超高清量子点电视 ULED画质 VIDAA系统
+                                            </div>
+                                            <span>￥ 13999</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <div>
+                                        <img src="../static/images/goods_thnmp.png" alt="">
+                                        </div>
+                                        <div>
+                                            <div class="mui-ellipsis">
+                                                海信(Hisense)LED55MU9600X3DUC 55英寸 4K超高清量子点电视 ULED画质 VIDAA系统
+                                            </div>
+                                            <span>￥ 13999</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- 底部导航部分 -->
         <div class="pyg_footer">
@@ -54,4 +105,5 @@
 <script src="../lib/arttemplate/template-web.js"></script>
 <script src="../js/common.js"></script>
 <script src="../js/goodsList.js"></script>
+
 </html>
