@@ -59,7 +59,7 @@
             </div>
             <!-- 商品列表部分 -->
             <div class="pyg_goodsList">
-                
+
             </div>
         </div>
         <!-- 底部导航部分 -->
@@ -84,23 +84,22 @@
             </nav>
         </div>
     </div>
-</body>
-<script src="./lib/mui/js/mui.min.js"></script>
-<script src="./lib/zepto/zepto.js"></script>
-<script src="./lib/arttemplate/template-web.js"></script>
-<script type="text/template" id="pyg_bannerTemp">
+
+
+
+    <script type="text/template" id="pyg_bannerTemp">
     <div class="mui-slider-item mui-slider-item-duplicate"><a href="data[data.length-1].navigator_url"><img src="{{data[data.length-1].image_src}}" /></a></div>
            {{each data value index}}
             <div class="mui-slider-item"><a href="value.navigator_url"><img src="{{value.image_src}}" /></a></div>
             {{/each}}
             <div class="mui-slider-item mui-slider-item-duplicate"><a href="data[0].navigator_url"><img src="{{data[0].image_src}}" /></a></div>
-</script>
-<script type="text/template" id="pyg_indicatorTemp">
+    </script>
+    <script type="text/template" id="pyg_indicatorTemp">
     {{each data value index}}
     <div class="mui-indicator {{index==0?'mui-active':''}}"></div>
     {{/each}}
-</script>
-<script type="text/template" id="goodsTemp">
+    </script>
+    <script type="text/template" id="goodsTemp">
     {{each data value index}}
     <div class="pyg_goodsItem">
             <img src="{{value.group_img}}" alt="" class="titleImg">
@@ -117,8 +116,12 @@
             {{/each}}
      </div>
      {{/each}}
-</script>
-<script src="./js/common.js"></script>
-<script src="./js/index.js"></script>
+    </script>
+    <script src="./lib/mui/js/mui.min.js"></script>
+    <script src="./lib/zepto/zepto.js"></script>
+    <script src="./lib/arttemplate/template-web.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/index.js"></script>
+</body>
 
 </html>
