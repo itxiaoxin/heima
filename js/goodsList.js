@@ -5,7 +5,6 @@ $(function () {
     mui('.mui-off-canvas-wrap').offCanvas().show();
   });
 
-
   // renderMainData();这里不需要再调用了，因为下拉刷新初始化时设置了首次加载刷新一次
 
   // 这是发送请求时服务器端要求传入的参数，由于后面侧滑菜单搜索时需要传入query这个参数，所以将data定义为一个全局变量
@@ -60,14 +59,14 @@ $(function () {
         // 下拉松开手指后就会触发
         callback: function () {//必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
           // 下拉时重置页码
-          pagenum = 1;
+          data.pagenum = 1;
           renderMainData(function (result) {
             if (result.meta.status == 200) {
               var html = template('goodsListTemp', result.data);
               $('.pyg_content .goods_list').html(html);
               mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
               // 为了防止切换分类的时候，无法再上拉加载，因此在每次刷新的时候将上拉加载重新启用
-              mui('#pullup-container').pullRefresh().enablePullupToRefresh();
+              mui('#refreshContainer').pullRefresh().enablePullupToRefresh();
             }
           })
         }
@@ -79,7 +78,7 @@ $(function () {
         contentrefresh: "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
         contentnomore: '没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
         callback: function () {//必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据
-          pagenum++;
+          data.pagenum++;
           renderMainData(function (result) {
             if (result.meta.status == 200) {
 
