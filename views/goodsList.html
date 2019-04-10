@@ -27,13 +27,20 @@
                     <div class="mui-scroll-wrapper">
                         <div class="mui-scroll aside">
                             <!-- 菜单具体展示内容 -->
-                            <div class="aside_search">
-                                <input class="search_txt"></input>
-                                <button class="serch_btn">搜索</button>
+                            <div class="aside_query">
+                                <input class="query_txt"></input>
+                                <button class="query_btn">搜索</button>
                             </div>
                             <div class="aside_history">
                                 <button type="button" class="mui-btn mui-btn-danger">清空</button>
-                            </div>
+                                <ul class="historyList">
+                                </ul>   
+                                <div class="queryGoods">
+                                    <ul class="queryList">
+                                       
+                                    </ul>
+                                </div>
+                            </div>                           
 
                         </div>
                     </div>
@@ -97,6 +104,13 @@
     </li>
     {{/each}}
     </script>
+    <script type="text/template" id="queryGoodsTemp">
+    {{each goods value index}}
+    <li class="mui-ellipsis">
+    <a href="./goodDetail.html?goods_id={{value.goods_id}}" class="mui-ellipsis">{{value.goods_name}}</a>
+    </li>
+    {{/each}}
+        </script>
     <script src="../lib/mui/js/mui.min.js"></script>
     <script src="../lib/zepto/zepto.js"></script>
     <script src="../lib/arttemplate/template-web.js"></script>

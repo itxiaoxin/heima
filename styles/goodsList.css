@@ -197,21 +197,22 @@ ul {
   color: #f00;
   font-weight: bold;
 }
-.pyg_content .aside > .aside_search {
+.pyg_content .aside > .aside_query {
   height: 44px;
   background-color: #ddd;
   padding: 6px;
   display: flex;
 }
-.pyg_content .aside > .aside_search > .search_txt {
+.pyg_content .aside > .aside_query > .query_txt {
   flex: 1;
   background-color: #fff;
   margin: 0;
   padding: 0;
   border: transparent;
   text-indent: 10px;
+  color: #333;
 }
-.pyg_content .aside > .aside_search > .serch_btn {
+.pyg_content .aside > .aside_query > .query_btn {
   padding: 0 30px;
   border: transparent;
   color: #fff;
@@ -224,4 +225,28 @@ ul {
 .pyg_content .aside > .aside_history > button {
   padding: 5px 20px;
   margin-bottom: 6px;
+}
+.pyg_content .aside > .aside_history > .historyList {
+  display: flex;
+  flex-wrap: wrap;
+}
+.pyg_content .aside > .aside_history > .historyList > li {
+  padding: 5px 3px;
+  font-size: 12px;
+  color: #333;
+  margin-left: 5px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+.pyg_content .aside > .aside_history > .queryGoods {
+  background-color: #fff;
+}
+.pyg_content .aside > .aside_history > .queryGoods > .queryList {
+  overflow: hidden;
+  padding: 5px;
+}
+.pyg_content .aside > .aside_history > .queryGoods > .queryList > li {
+  color: #0094ff;
+  padding: 5px 0;
+  overflow: hidden;
 }

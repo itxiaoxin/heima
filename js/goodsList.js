@@ -2,14 +2,13 @@ $(function () {
 
   // 点击搜索图标实现侧滑效果
   $('.mui-icon-search').on('tap', function () {
-    mui('.mui-off-canvas-wrap').offCanvas().show();
+    mui('.mui-off-canvas-wrap').offCanvas().toggle();
   });
 
   // renderMainData();这里不需要再调用了，因为下拉刷新初始化时设置了首次加载刷新一次
 
   // 这是发送请求时服务器端要求传入的参数，由于后面侧滑菜单搜索时需要传入query这个参数，所以将data定义为一个全局变量
   var data = {
-    query: '', //查询关键词
     cid: getParam(location.search).cid,  //分类id
     pagenum: 1,  //页数索引
     pagesize: 10 //每页长度
@@ -28,19 +27,19 @@ $(function () {
     return obj
   }
 
-
   // 封装获取数据函数，因为后期下拉刷新和上拉加载时还需要使用到
   //由于下拉和上拉都是通过这个方法发送请求，但是处理的业务逻辑不一样，所以只能通过回调函数自己调用自己，实现不同的业务逻辑
-  function renderMainData(callback) {
+  function renderMainData(callback, obj) {
     // console.log(data);
     $.ajax({
       type: 'get',
       url: 'goods/search',
-      data: data,
+      data: $.extend(data, obj),
       dataType: 'json',
       success: function (result) {
         // console.log(result)
         callback(result);
+        $('body').removeClass('loadding');
       }
     })
   }
@@ -59,6 +58,7 @@ $(function () {
         // 下拉松开手指后就会触发
         callback: function () {//必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
           // 下拉时重置页码
+          $('body').addClass('loadding');
           data.pagenum = 1;
           renderMainData(function (result) {
             if (result.meta.status == 200) {
@@ -102,5 +102,17 @@ $(function () {
       }
     }
   });
+
+  $('.query_btn').on('tap', function () {
+    var obj = {};
+    obj.query = $('.query_txt').val();
+    renderMainData(function (result) {
+      console.log(result.data);
+      var html = template('queryGoodsTemp', result.data);
+      $('.queryList').html(html)
+
+    }, obj)
+  })
+
 
 })
