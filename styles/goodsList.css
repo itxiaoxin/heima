@@ -198,16 +198,24 @@ ul {
   font-weight: bold;
 }
 .pyg_content .aside > .aside_search {
-  background-color: #ccc;
+  height: 44px;
+  background-color: #ddd;
   padding: 6px;
   display: flex;
 }
 .pyg_content .aside > .aside_search > .search_txt {
   flex: 1;
   background-color: #fff;
+  margin: 0;
+  padding: 0;
+  border: transparent;
+  text-indent: 10px;
 }
-.pyg_content .aside > .aside_search > button {
-  padding: 5px 30px;
+.pyg_content .aside > .aside_search > .serch_btn {
+  padding: 0 30px;
+  border: transparent;
+  color: #fff;
+  background-color: #0094ff;
 }
 .pyg_content .aside > .aside_history {
   background-color: #fff;
