@@ -197,3 +197,23 @@ ul {
   color: #f00;
   font-weight: bold;
 }
+.pyg_content .aside > .aside_search {
+  background-color: #ccc;
+  padding: 6px;
+  display: flex;
+}
+.pyg_content .aside > .aside_search > .search_txt {
+  flex: 1;
+  background-color: #fff;
+}
+.pyg_content .aside > .aside_search > button {
+  padding: 5px 30px;
+}
+.pyg_content .aside > .aside_history {
+  background-color: #fff;
+  padding: 6px;
+}
+.pyg_content .aside > .aside_history > button {
+  padding: 5px 20px;
+  margin-bottom: 6px;
+}
