@@ -11,4 +11,20 @@ $(function () {
         // 拼接路径并重新赋值 obj.url就是发送ajax请求时的url
         obj.url = baseURL + obj.url;
     }
+
+    // zepto扩展自定义方法 getParam获取url地址栏中的参数
+    $.extend($,{
+        getParam:function(url){
+            var obj = {};
+            // location.search为当前页面路径中?及?后面的部分  '?cid=5&name=jack...'
+            var url = url.substring(1);//'cid=5&name=jack'
+            var arr = url.split('&');//['cid=5','name=jack']
+            for (i = 0; i < arr.length; i++) {  //遍历，再次进行拆分
+              var temp = arr[i].split('='); //['cid',5]
+              obj[temp[0]] = temp[1];
+            }
+            return obj
+        }
+    })
+
 })

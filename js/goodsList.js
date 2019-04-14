@@ -9,23 +9,11 @@ $(function () {
 
   // 这是发送请求时服务器端要求传入的参数，由于后面侧滑菜单搜索时需要传入query这个参数，所以将data定义为一个全局变量
   var data = {
-    cid: getParam(location.search).cid,  //分类id
+    cid: $.getParam(location.search).cid,  //分类id
     pagenum: 1,  //页数索引
     pagesize: 10 //每页长度
   }
 
-  // 获取url地址栏中的参数
-  function getParam(url) {
-    var obj = {};
-    // location.search为当前页面路径中?及?后面的部分  '?cid=5&name=jack...'
-    var url = url.substring(1);//'cid=5&name=jack'
-    var arr = url.split('&');//['cid=5','name=jack']
-    for (i = 0; i < arr.length; i++) {  //遍历，再次进行拆分
-      var temp = arr[i].split('='); //['cid',5]
-      obj[temp[0]] = temp[1];
-    }
-    return obj
-  }
 
   // 封装获取数据函数，因为后期下拉刷新和上拉加载时还需要使用到
   //由于下拉和上拉都是通过这个方法发送请求，但是处理的业务逻辑不一样，所以只能通过回调函数自己调用自己，实现不同的业务逻辑
@@ -103,11 +91,12 @@ $(function () {
     }
   });
 
+  // 点击搜索按钮，渲染对应的数据
   $('.query_btn').on('tap', function () {
     var obj = {};
     obj.query = $('.query_txt').val();
     renderMainData(function (result) {
-      console.log(result.data);
+      // console.log(result.data);
       var html = template('queryGoodsTemp', result.data);
       $('.queryList').html(html)
 
