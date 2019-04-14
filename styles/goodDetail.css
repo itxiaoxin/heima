@@ -145,6 +145,65 @@ ul {
   z-index: 101;
   animation: fa-spin 1s infinite linear;
 }
+#header {
+  padding: 0 10px;
+}
+.pyg_content {
+  background-color: #fff;
+  position: relative;
+  padding-top: 45px;
+}
+.pyg_content .mui-scroll-wrapper {
+  top: 45px;
+  bottom: 20px;
+}
+.pyg_content .goods_name {
+  padding: 5px;
+}
+.pyg_content .goods_price {
+  padding: 10px 5px;
+  font-size: 20px;
+  color: #ffab13;
+}
+.pyg_content .goods_info {
+  padding: 0 5px;
+}
+.pyg_content .goods_info > ul > li {
+  font-size: 14px;
+  display: flex;
+  padding: 5px 0;
+  border-bottom: 1px solid #666;
+}
+.pyg_content .goods_info > ul > li > span:nth-of-type(1) {
+  flex: 2;
+  color: #aaa;
+}
+.pyg_content .goods_info > ul > li > span:nth-of-type(2) {
+  flex: 4;
+  color: #555;
+}
+.pyg_content .good_description #item2 {
+  padding: 0 5px;
+  color: #555;
+}
+.pyg_content .good_description #item2 > div {
+  background-color: #eee;
+}
+.pyg_content .good_description #item2 > div > h3 {
+  padding: 5px 0;
+  border-bottom: 1px solid #555;
+}
+.pyg_content .good_description #item2 > div > div {
+  font-size: 14px;
+  padding: 5px 0;
+  display: flex;
+}
+.pyg_content .good_description #item2 > div > div > span:nth-of-type(1) {
+  flex: 2;
+}
+.pyg_content .good_description #item2 > div > div > span:nth-of-type(2) {
+  flex: 4;
+}
 .pyg_footer {
   background-color: #fff;
 }
