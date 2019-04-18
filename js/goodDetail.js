@@ -63,13 +63,13 @@ $(function () {
                     sessionStorage.setItem('redirectUrl', location.href);
                     location.href = 'login.html'
                 } else {
+                    // 如果有效，加入购物车
                     console.log('success')
                 }
 
             }, 'json')
 
         }
-        // 如果有效，加入购物车
 
     })
 })

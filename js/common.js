@@ -10,6 +10,11 @@ $(function () {
         // console.log(obj);
         // 拼接路径并重新赋值 obj.url就是发送ajax请求时的url
         obj.url = baseURL + obj.url;
+        
+        // 如果访问的是私有路径，就通过设置请求头把token值手动传送给服务器，根据接口文档设置 键名Authorization
+        if(obj.url.indexOf('/my/')!=-1){
+            xhr.setRequestHeader("Authorization",sessionStorage.getItem('pyg_token'))
+        }
     }
 
     // zepto扩展自定义方法 getParam获取url地址栏中的参数
