@@ -104,8 +104,9 @@ ul {
 .pyg_content .mui-input-group {
   margin-top: 10px;
 }
-.pyg_content button {
+.pyg_content a {
   width: 100%;
+  display: block;
   margin-top: 20px;
 }
 .pyg_footer .mui-bar-tab .mui-tab-item.mui-active {

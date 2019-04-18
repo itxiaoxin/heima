@@ -49,17 +49,20 @@ $(function () {
         // 1.发送请求之前判断本地存储中是否有token值
         var token = sessionStorage.getItem('pyg_token');
         if (!token) {
-            // 如果没有，请登录
+            // 如果没有，重定向到登录页
+            // 跳转之前把当前页面地址存储到本地存储，方便登录成功后跳转回来
+            sessionStorage.setItem('redirectUrl', location.href)
             location.href = 'login.html'
         } else {
             // 如果有，发送请求
             $.post('my/cart/add', carInfo, function (result) {
                 //    console.log(result);
                 // 3.判断token值是否有效
-                // 如果无效，跳转到登录页
+                // 如果无效，重定向到登录页
                 if (result.meta.status == 401) {
-                    location.href = 'login.html'                    
-                }else {
+                    sessionStorage.setItem('redirectUrl', location.href);
+                    location.href = 'login.html'
+                } else {
                     console.log('success')
                 }
 
