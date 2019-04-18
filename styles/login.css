@@ -99,15 +99,15 @@ ul {
   margin: 0 auto;
 }
 .pyg_content {
-  padding-top: 44px;
+  padding: 44px 10px 0;
 }
 .pyg_content .mui-input-group {
   margin-top: 10px;
 }
-.pyg_content .logIn {
+.pyg_content button {
   width: 100%;
-  margin: 20px 10px;
+  margin-top: 20px;
 }
-.pyg_footer {
-  height: 50px;
+.pyg_footer .mui-bar-tab .mui-tab-item.mui-active {
+  color: #929292;
 }
