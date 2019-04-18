@@ -5,15 +5,15 @@ $(function () {
         indicators: false    //设置没有滚动条，默认值是ture
     });
 
-// 这是加入购物车时需要提交的数据，因为需要从商品详情数据中获取，所以创建一个全局变量
-    var carInfo={
-        cat_id:'',
-        goods_id:'',
-        goods_name:'',
-        goods_number:'',
-        goods_price:'',
-        goods_small_logo:'',
-        goods_weight:''
+    // 这是加入购物车时需要提交的数据，因为需要从商品详情数据中获取，所以创建一个全局变量
+    var carInfo = {
+        cat_id: '',
+        goods_id: '',
+        goods_name: '',
+        goods_number: '',
+        goods_price: '',
+        goods_small_logo: '',
+        goods_weight: ''
 
     }
 
@@ -26,13 +26,13 @@ $(function () {
         success: function (result) {
             // console.log(result);
             // 以下信息是要发送加入购物车请求时需要提交的数据
-            carInfo.cat_id=result.data.cat_id;
-            carInfo.goods_id=result.data.goods_id;
-            carInfo.goods_name=result.data.goods_name;
-            carInfo.goods_number=result.data.goods_number;
-            carInfo.goods_price=result.data.goods_price;
-            carInfo.goods_small_logo=result.data.goods_small_logo;
-            carInfo.goods_weight=result.data.goods_weight;
+            carInfo.cat_id = result.data.cat_id;
+            carInfo.goods_id = result.data.goods_id;
+            carInfo.goods_name = result.data.goods_name;
+            carInfo.goods_number = result.data.goods_number;
+            carInfo.goods_price = result.data.goods_price;
+            carInfo.goods_small_logo = result.data.goods_small_logo;
+            carInfo.goods_weight = result.data.goods_weight;
 
             var html = template('goodTemp', result.data);
             $('.goodsInfo').html(html);
@@ -45,11 +45,28 @@ $(function () {
     })
 
     // 加入购物车
-    $('.addCart').on('tap',function(){
-        // 点击加入购物车，发送请求
-        $.post('my/cart/add',carInfo,function(result){
-            console.log(result);
-            
-        },'json')
+    $('.addCart').on('tap', function () {
+        // 1.发送请求之前判断本地存储中是否有token值
+        var token = sessionStorage.getItem('pyg_token');
+        if (!token) {
+            // 如果没有，请登录
+            location.href = 'login.html'
+        } else {
+            // 如果有，发送请求
+            $.post('my/cart/add', carInfo, function (result) {
+                //    console.log(result);
+                // 3.判断token值是否有效
+                // 如果无效，跳转到登录页
+                if (result.meta.status == 401) {
+                    location.href = 'login.html'                    
+                }else {
+                    console.log('success')
+                }
+
+            }, 'json')
+
+        }
+        // 如果有效，加入购物车
+
     })
 })
