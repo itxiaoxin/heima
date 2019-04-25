@@ -12,11 +12,14 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 // 导入组件
-import Login from './assets/pages/Login.vue';
+import Login from './pages/Login.vue';
+import Admin from './pages/Admin.vue'
 
 // 配置路由
 const routes=[
-  {path:'/login',component:Login}
+  {path:'/',redirect:'/admin'},
+  {path:'/login',component:Login},
+  {path:'/admin',component:Admin}
 ]
 
 const router=new VueRouter({routes});

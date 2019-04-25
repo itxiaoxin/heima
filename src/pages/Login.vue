@@ -58,7 +58,7 @@ export default {
         // console.log(result)
         const {status,message}=result.data
         if (status == 0) {
-          this.$router.push("/admin");
+          this.$router.push("/");
         } else {
           this.$message({
             message:message,
