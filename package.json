@@ -11,7 +11,10 @@
     "axios": "^0.18.0",
     "core-js": "^2.6.5",
     "element-ui": "^2.7.2",
-    "vue": "^2.6.10"
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.6.0",
@@ -31,7 +34,10 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": "off",
+      "no-debugger": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 // 引入axios，用于发送请求，相当于ajax
 import axios from 'axios';
+import VueRouter from 'vue-router';
 
 // 是否是生产函数
 Vue.config.productionTip = false;
@@ -10,6 +11,17 @@ Vue.config.productionTip = false;
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+// 导入组件
+import Login from './assets/pages/Login.vue';
+
+// 配置路由
+const routes=[
+  {path:'/login',component:Login}
+]
+
+const router=new VueRouter({routes});
+Vue.use(VueRouter);
+
 // 注册element-ui组件
 Vue.use(ElementUI);
 
@@ -17,5 +29,6 @@ Vue.use(ElementUI);
 Vue.prototype.$axios=axios;
 
 new Vue({
+  router,
   render: h => h(App),
 }).$mount('#app')
