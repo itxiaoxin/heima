@@ -1,4 +1,5 @@
 <template>
+<div class="pageContainer">
   <el-container>
     <el-aside width="200px">
       <!-- 放置侧边栏组件 -->
@@ -8,6 +9,7 @@
     <el-container>
       <el-header>
         <!-- 放置头部组件 -->
+        <Header></Header>
       </el-header>
 
       <el-main>
@@ -15,14 +17,17 @@
       </el-main>
     </el-container>
   </el-container>
+  </div>
 </template>
 
 <script>
 import Aside from "../components/Aside.vue";
+import Header from "../components/Header.vue";
 
 export default {
   components: {
-    Aside
+    Aside,
+    Header
   }
 };
 </script>
@@ -30,16 +35,13 @@ export default {
 <style>
 
 .el-header {
-  background-color: #b3c0d1;
+  background-color: #fff;
   color: #333;
   text-align: center;
   line-height: 60px;
 }
 
 .el-aside {
-  position:absolute;
-  top:0;
-  bottom:0;
   background-color: #545c64;
 }
 
@@ -49,8 +51,11 @@ export default {
   text-align: center;
   line-height: 160px;
 }
-body > .el-container {
-  margin-bottom: 40px;
+.pageContainer > .el-container {
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:100%;
 }
 
 .el-container:nth-child(5) .el-aside,
