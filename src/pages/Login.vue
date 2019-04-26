@@ -24,8 +24,8 @@ export default {
   data() {
     return {
       form: {
-        uname: "",
-        upwd: ""
+        uname: "admin",
+        upwd: "123456"
       },
     //   表单验证
        rules: {
@@ -49,20 +49,23 @@ export default {
             
       // 如果通过验证，就发送请求
       this.$axios({
-        url: "http://localhost:8899/admin/account/login",
+        url: "/admin/account/login",
         method: "POST",
         data: this.form,
         // 处理跨域请求的参数
         withCredentials:true
       }).then(result => {
-        // console.log(result)
+        // console.log(result);
         const {status,message}=result.data
+        // 登录成功，进入后台页面，把用户信息保存到本地存储
         if (status == 0) {
           this.$router.push("/");
+          localStorage.setItem('userName',message.uname);
+          localStorage.setItem('realname',message.realname);
         } else {
           this.$message({
             message:message,
-            type: "success"
+            type: "error"
           });
         }
       });
