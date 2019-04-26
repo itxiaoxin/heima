@@ -16,7 +16,7 @@
       <el-menu-item :index="`${index+1}-${subIndex+1}`" 
       v-for="(subItem,subIndex) in item.children"
       :key="subIndex">
-      <router-link to="subItem.src">{{subItem.name}}</router-link>
+      <router-link :to="subItem.src">{{subItem.name}}</router-link>
       </el-menu-item>
     </el-submenu>
     
@@ -69,12 +69,12 @@ export default {
 .el-menu {
     border-right:none;
 }
-.router-link-active {
-    text-decoration: none;
-    color:inherit;
-}
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
     min-height: 400px;
   }
+  a {
+    text-decoration: none;
+    color:inherit;
+}
 </style>
