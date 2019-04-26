@@ -5,16 +5,18 @@
     background-color="#545c64"
     text-color="#fff"
     active-text-color="#00a4ff"
+    :collapse="collapse"
   >
-    <el-submenu :index="`${index+1}`" v-for="(item,index) in menu">
+    <el-submenu :index="`${index+1}`" v-for="(item,index) in menu" :key="index">
       <template slot="title">
         <i :class="item.icon"></i>
         <span>{{item.name}}</span>
       </template>
 
       <el-menu-item :index="`${index+1}-${subIndex+1}`" 
-      v-for="(subItem,subIndex) in item.children">
-      <router-link to="">{{subItem.name}}</router-link>
+      v-for="(subItem,subIndex) in item.children"
+      :key="subIndex">
+      <router-link to="subItem.src">{{subItem.name}}</router-link>
       </el-menu-item>
     </el-submenu>
     
@@ -51,6 +53,14 @@ export default {
                 }
             ]
         }
+    },
+    props:{
+        collapse:{
+            // 属性的类型
+            type:Boolean,
+            // 默认值
+            value:false
+        }
     }
 };
 </script>
@@ -63,4 +73,8 @@ export default {
     text-decoration: none;
     color:inherit;
 }
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
+  }
 </style>

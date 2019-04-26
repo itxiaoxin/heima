@@ -1,15 +1,15 @@
 <template>
 <div class="pageContainer">
   <el-container>
-    <el-aside width="200px">
+    <el-aside width="auto">
       <!-- 放置侧边栏组件 -->
-      <Aside></Aside>
+      <Aside :collapse="isCollapse"></Aside>
     </el-aside>
     
     <el-container>
       <el-header>
         <!-- 放置头部组件 -->
-        <Header></Header>
+        <Header @changeCollapse="changeCollapse"></Header>
       </el-header>
 
       <el-main>
@@ -25,6 +25,17 @@ import Aside from "../components/Aside.vue";
 import Header from "../components/Header.vue";
 
 export default {
+  data(){
+    return {      
+        isCollapse:false,
+    }
+  },
+  methods:{
+    // 切换侧边栏状态
+    changeCollapse(){
+      this.isCollapse=!this.isCollapse
+    }
+  },
   components: {
     Aside,
     Header
@@ -52,10 +63,10 @@ export default {
   line-height: 160px;
 }
 .pageContainer > .el-container {
+  width:100%;
   position:absolute;
   top:0;
   bottom:0;
-  width:100%;
 }
 
 .el-container:nth-child(5) .el-aside,
