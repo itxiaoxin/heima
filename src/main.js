@@ -13,13 +13,18 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 // 导入组件
 import Login from './pages/Login.vue';
-import Admin from './pages/Admin.vue'
+import Admin from './pages/Admin.vue';
+import GoodsList from './pages/GoodsList.vue';
 
 // 配置路由
 const routes = [
   { path: '/', redirect: '/admin' },
-  { path: '/login', component: Login },
-  { path: '/admin', component: Admin }
+  { path: '/login', component: Login ,meta:'登录'},
+  {
+    path: '/admin', component: Admin, meta:'管理后台',children: [
+      { path: 'goods-list', component: GoodsList , meta:'商品管理'}
+    ]
+  }
 ]
 
 // 创建路由实例
@@ -47,7 +52,7 @@ Vue.use(ElementUI);
 // 把axios方法绑定到Vue的原型链上，以后每个页面通过this.$axios就可以发送请求，而不需要每次都引入axios
 Vue.prototype.$axios = axios;
 // 设置axios默认基本路径，每次axios请求都会加上这串路径
-axios.defaults.baseURL='http://localhost:8899';
+axios.defaults.baseURL = 'http://localhost:8899';
 
 new Vue({
   router,
