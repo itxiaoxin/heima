@@ -6,8 +6,8 @@
         <el-button @click="deleteGoods">删除</el-button>
       </el-col>
       <div style="margin: 15px 0;">
-        <el-input placeholder="请输入内容" class="input-with-select">
-          <el-button slot="append" icon="el-icon-search"></el-button>
+        <el-input placeholder="请输入内容" v-model="searchvalue" class="input-with-select" @keyup.enter.native="searchGoods">
+          <el-button slot="append" icon="el-icon-search" @click="searchGoods"></el-button>
         </el-input>
       </div>
     </el-row>
@@ -45,7 +45,8 @@ export default {
     return {
       tableData: [],   
        //提交删除商品请求的参数
-      ids:''           
+      ids:'',
+      searchvalue:''         
     };
   },
 
@@ -54,7 +55,7 @@ export default {
     getGoodsList() {
       //  请求商品列表数据
       this.$axios({
-        url: "/admin/goods/getlist?pageIndex=1&pageSize=10",
+        url: `/admin/goods/getlist?pageIndex=1&pageSize=10&searchvalue=${this.searchvalue}`,
         withCredentials: true
       }).then(res => {
         // console.log(res.data.message)
@@ -104,6 +105,15 @@ export default {
           return v.id
       }).join(',')
     },
+
+    // 搜索商品
+    searchGoods(){
+        if(this.searchvalue){
+        this.getGoodsList()
+        }else {            
+        this.getGoodsList()
+        }
+    }
 
     },
 
