@@ -6,14 +6,19 @@
         <el-button @click="deleteGoods">删除</el-button>
       </el-col>
       <div style="margin: 15px 0;">
-        <el-input placeholder="请输入内容" v-model="searchvalue" class="input-with-select" @keyup.enter.native="searchGoods">
+        <el-input
+          placeholder="请输入内容"
+          v-model="searchvalue"
+          class="input-with-select"
+          @keyup.enter.native="searchGoods"
+        >
           <el-button slot="append" icon="el-icon-search" @click="searchGoods"></el-button>
         </el-input>
       </div>
     </el-row>
 
     <!-- 商品列表数据 -->
-    <el-table :data="tableData" style="width: 100%" @selection-change="handleSelectionChange">
+    <el-table :data="tableData" style="width: 100%;margin-bottom:20px" @selection-change="handleSelectionChange">
       <!-- 多选 -->
       <el-table-column type="selection" width="55"></el-table-column>
 
@@ -36,6 +41,18 @@
         </template>
       </el-table-column>
     </el-table>
+
+    <!-- 分页 -->
+    <div class="block">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :page-sizes="pageSizes"
+        :page-size="pageSize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="totalcount"
+      ></el-pagination>
+    </div>
   </div>
 </template>
 
@@ -43,10 +60,19 @@
 export default {
   data() {
     return {
-      tableData: [],   
-       //提交删除商品请求的参数
-      ids:'',
-      searchvalue:''         
+      tableData: [],
+      //商品id -- 请求删除商品提交的参数
+      ids: "",
+    //  搜索内容
+      searchvalue: "",
+      // 页码  -- 请求商品列表提交的参数
+      pageIndex:1,
+
+    //   总条目数，每页显示的条目数，每页显示个数的选项设置
+      totalcount:0, 
+      pageSize:5,
+      pageSizes:[5,10],    
+      
     };
   },
 
@@ -55,11 +81,14 @@ export default {
     getGoodsList() {
       //  请求商品列表数据
       this.$axios({
-        url: `/admin/goods/getlist?pageIndex=1&pageSize=10&searchvalue=${this.searchvalue}`,
+        url: `/admin/goods/getlist?pageIndex=${this.pageIndex}&pageSize=${this.pageSize}&searchvalue=${
+          this.searchvalue
+        }`,
         withCredentials: true
       }).then(res => {
-        // console.log(res.data.message)
+        // console.log(res)
         this.tableData = res.data.message;
+        this.totalcount=res.data.totalcount
       });
     },
 
@@ -72,12 +101,12 @@ export default {
       //   console.log(row);
       // 提交删除商品请求的参数
       this.ids = row.id;
-      this.deleteGoods()
+      this.deleteGoods();
     },
 
     // 删除商品
-    deleteGoods(){
-        // 询问是否删除
+    deleteGoods() {
+      // 询问是否删除
       this.$confirm("确认删除商品？").then(_ => {
         this.$axios({
           url: `/admin/goods/del/${this.ids}`,
@@ -100,22 +129,39 @@ export default {
     // 多选选择的时候触发
     handleSelectionChange(val) {
       this.multipleSelection = val;
-    //   获取选择商品的id并将其转成接口文档要求的格式
-      this.ids=val.map(v=>{
-          return v.id
-      }).join(',')
+      //   获取选择商品的id并将其转成接口文档要求的格式
+      this.ids = val
+        .map(v => {
+          return v.id;
+        })
+        .join(",");
     },
 
     // 搜索商品
-    searchGoods(){
-        if(this.searchvalue){
-        this.getGoodsList()
-        }else {            
-        this.getGoodsList()
-        }
-    }
-
+    searchGoods() {
+      if (this.searchvalue) {
+        this.getGoodsList();
+      } else {
+        this.getGoodsList();
+      }
     },
+
+    /*   分页业务   */    
+    // pageSize 改变时会触发，改变每页显示的条目数
+    handleSizeChange(val) {
+        // console.log(`每页 ${val} 条`);
+        this.pageSize=val;
+        this.getGoodsList();
+      },
+    // currentPage 改变时会触发，切换当前页
+    handleCurrentChange(val) {
+        // console.log(`当前页: ${val}`);
+        this.pageIndex=val;
+        this.getGoodsList();
+      }
+
+
+  },
 
   mounted() {
     //   页面加载渲染列表
