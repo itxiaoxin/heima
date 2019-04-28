@@ -1,18 +1,20 @@
 <template>
   <div>
-    <el-row type="flex" align="middle">
+    <el-row type="flex" align="middle" style="margin-bottom: 15px;">
       <el-col>
-        <el-button>新增</el-button>
+        <el-button @click="$router.push('/admin/goods-add')">新增
+          <!-- <router-link to="./goods-add">新增</router-link> -->
+          </el-button>
         <el-button @click="deleteGoods">删除</el-button>
       </el-col>
-      <div style="margin: 15px 0;">
+      <div>
         <el-input
           placeholder="请输入内容"
           v-model="searchvalue"
           class="input-with-select"
-          @keyup.enter.native="searchGoods"
+          @keyup.enter.native="handleSearchGoods"
         >
-          <el-button slot="append" icon="el-icon-search" @click="searchGoods"></el-button>
+          <el-button slot="append" icon="el-icon-search" @click="handleSearchGoods"></el-button>
         </el-input>
       </div>
     </el-row>
@@ -36,7 +38,7 @@
 
       <el-table-column label="操作" align="right">
         <template slot-scope="scope">
-          <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+          <el-button size="mini" @click="handleEdit(scope.row)">编辑</el-button>
           <el-button size="mini" type="danger" @click="handleDelete(scope.row)">删除</el-button>
         </template>
       </el-table-column>
@@ -44,6 +46,7 @@
 
     <!-- 分页 -->
     <div class="block">
+      <!-- layout分页的布局，调整里面值的顺序可以改变分页的页面结构布局 -->
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
@@ -57,6 +60,8 @@
 </template>
 
 <script>
+import GoodsAdd from './GoodsAdd.vue';
+
 export default {
   data() {
     return {
@@ -77,6 +82,7 @@ export default {
   },
 
   methods: {
+  
     // 渲染商品列表--封装
     getGoodsList() {
       //  请求商品列表数据
@@ -92,8 +98,9 @@ export default {
       });
     },
 
-    handleEdit(index, row) {
-      console.log(index, row);
+    handleEdit( row) {
+      // console.log(row);
+      this.$router.push(`/admin/goods-edit/${row.id}`)
     },
 
     // 删除单个商品
@@ -138,12 +145,8 @@ export default {
     },
 
     // 搜索商品
-    searchGoods() {
-      if (this.searchvalue) {
-        this.getGoodsList();
-      } else {
-        this.getGoodsList();
-      }
+    handleSearchGoods() {
+     this.getGoodsList();
     },
 
     /*   分页业务   */    

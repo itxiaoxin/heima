@@ -63,6 +63,7 @@ export default {
 <style>
 .breadcrumb {
   padding:15px 0;
+  margin-bottom:15px;
   border-bottom:1px solid #ccc;
 }
 .el-header {
