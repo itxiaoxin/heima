@@ -38,6 +38,7 @@
           :on-success="handleAvatarSuccess"
           :before-upload="beforeAvatarUpload"
         >
+        <!-- 预览图片 ,默认为空-->
           <img v-if="imageUrl" :src="imageUrl" class="avatar">
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
@@ -118,8 +119,10 @@ export default {
         imgList: [],
         fileList: []
       },
+
       categories: [],
-      imageUrl: "",
+
+      imageUrl: "", //预览图片
 
       dialogImageUrl: "",
       dialogVisible: false,
@@ -217,6 +220,7 @@ export default {
       // console.log(res);
       this.form=res.data.message;
       console.log(this.form)
+      this.imageUrl=this.form.imgList[0].url
     });
   },
 
