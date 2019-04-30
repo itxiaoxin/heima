@@ -18,6 +18,7 @@ import Admin from './pages/Admin.vue';
 import GoodsList from './pages/GoodsList.vue';
 import GoodsAdd from './pages/GoodsAdd.vue';
 import GoodsEdit from './pages/GoodsEdit.vue';
+import CategoryList from './pages/CategoryList.vue';
 
 // 配置路由
 const routes = [
@@ -27,7 +28,8 @@ const routes = [
     path: '/admin', component: Admin, meta:'管理后台',children: [
       { path: 'goods-list', component: GoodsList , meta:'商品管理'},
       {path:'goods-add',component:GoodsAdd,meta:'添加商品'},
-      {path:'goods-edit/:id',component:GoodsEdit,meta:'编辑商品'}   // :id 表示动态参数，这里是为了传id
+      {path:'goods-edit/:id',component:GoodsEdit,meta:'编辑商品'},   // :id 表示动态参数，这里是为了传id
+      {path:'category-list',component:CategoryList,meta:'栏目管理'}
     ]
   }
 ]

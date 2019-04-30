@@ -92,7 +92,7 @@ export default {
         }`,
         withCredentials: true
       }).then(res => {
-        console.log(res)
+        // console.log(res)
         const {message} = res.data;
         // 后台返回的封面图片的路径有问题，手动拼接图片路径
         this.tableData =message.map(v=>{

@@ -216,9 +216,10 @@ export default {
     }).then(res => {
       // console.log(res);
       const {message}= res.data;
-      console.log(message)
+      // 设置封面图片的预览图片
       this.imageUrl=message.imgList[0].url;
-      
+
+      // 拼接图片路径，后台返回的路径有问题
       this.form={
         ...message,
         fileList:message.fileList.map(v=>{
@@ -228,8 +229,6 @@ export default {
           }
         })
       }
-
-
 
     });
   },
