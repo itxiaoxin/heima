@@ -24,17 +24,11 @@
       <!-- 多选 -->
       <el-table-column type="selection" width="55"></el-table-column>
 
-      <el-table-column label="标题">
-        <template slot-scope="scope">
-          <el-row type="flex" align="middle">
-            <img :src="scope.row.imgurl">
-            <p>{{scope.row.title}}</p>
-          </el-row>
-        </template>
-      </el-table-column>
-
-      <el-table-column prop="categoryname" label="类型" width="180"></el-table-column>
-      <el-table-column prop="market_price" label="价格" width="180"></el-table-column>
+      <el-table-column prop="categoryname" label="订单ID" width="180"></el-table-column>
+      <el-table-column prop="categoryname" label="会员名称" width="180"></el-table-column>
+      <el-table-column prop="categoryname" label="地址" width="180"></el-table-column>
+      <el-table-column prop="market_price" label="快递" width="180"></el-table-column>
+      <el-table-column prop="categoryname" label="状态" width="180"></el-table-column>
 
       <el-table-column label="操作" align="right">
         <template slot-scope="scope">
@@ -60,7 +54,6 @@
 </template>
 
 <script>
-import GoodsAdd from './GoodsAdd.vue';
 
 export default {
   data() {
@@ -92,15 +85,8 @@ export default {
         }`,
         withCredentials: true
       }).then(res => {
-        console.log(res)
-        const {message} = res.data;
-        // 后台返回的封面图片的路径有问题，手动拼接图片路径
-        this.tableData =message.map(v=>{
-          return {
-            ...v,
-            imgurl:`http://localhost:8899/${v.img_url}`
-          }
-        })
+        // console.log(res)
+        this.tableData = res.data.message;
         this.totalcount=res.data.totalcount
       });
     },

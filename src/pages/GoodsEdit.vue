@@ -68,6 +68,7 @@
           :on-preview="handlePictureCardPreview"
           :on-remove="handleRemove"
           :on-success="handleImageSuccess"
+          :file-list="form.fileList"
         >
           <i class="el-icon-plus"></i>
         </el-upload>
@@ -85,7 +86,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">立即创建</el-button>
+        <el-button type="primary" @click="onSubmit">更新</el-button>
         <el-button>取消</el-button>
       </el-form-item>
     </el-form>
@@ -131,12 +132,12 @@ export default {
     };
   },
   methods: {
-    // 提交表单
+    // 提交数据
     onSubmit() {
-      // console.log(this.form);
+      console.log(this.form);
       // 发送请求，提交数据
       this.$axios({
-        url: "/admin/goods/add/goods",
+        url: `/admin/goods/edit/${this.$route.params.id}`,
         method: "POST",
         data: this.form,
         withCredentials: true
@@ -144,7 +145,7 @@ export default {
         const { status, message } = res.data;
         // 商品添加成功后跳转到商品列表页
         if (status == 0) {
-          this.$router.back("/admin/goods-list");
+          this.$router.back();
           // 成功提示
           this.$message({
             message,
@@ -176,18 +177,14 @@ export default {
     // res当前图片的基本数据，file当前图片的全部数据，fileList数组，上传成功的全部图片的数据列表
     handleImageSuccess(res, file, fileList) {
       // console.log(res,file,fileList)
-      this.form.fileList = fileList.map(v => {
-        return v.response;
-      });
+      this.form.fileList = fileList;
       // console.log(this.form.fileList)
     },
     // 移除文件时触发
     // file被删除的文件的数据，fileList当前剩下的全部文件的数据
     handleRemove(file, fileList) {
       // console.log(file, fileList);
-      this.form.fileList = fileList.map(v => {
-        return v.response;
-      });
+      this.form.fileList= fileList;
     },
     // 点击图片放大
     handlePictureCardPreview(file) {
@@ -218,9 +215,22 @@ export default {
       url:`/admin/goods/getgoodsmodel/${id}`
     }).then(res => {
       // console.log(res);
-      this.form=res.data.message;
-      console.log(this.form)
-      this.imageUrl=this.form.imgList[0].url
+      const {message}= res.data;
+      console.log(message)
+      this.imageUrl=message.imgList[0].url;
+      
+      this.form={
+        ...message,
+        fileList:message.fileList.map(v=>{
+          return {
+            ...v,
+            url:`http://localhost:8899${v.shorturl}`
+          }
+        })
+      }
+
+
+
     });
   },
 

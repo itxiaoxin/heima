@@ -141,7 +141,7 @@ export default {
         const { status, message } = res.data;
         // 商品添加成功后跳转到商品列表页
         if (status == 0) {
-          this.$router.back("/admin/goods-list");
+          this.$router.back();
           // 成功提示
           this.$message({
             message,
