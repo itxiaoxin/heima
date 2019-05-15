@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd-mobile": "^2.2.13",
+    "axios": "^0.18.0",
     "fastclick": "^1.0.6",
     "react": "^16.8.6",
     "react-app-rewired": "^2.1.3",
