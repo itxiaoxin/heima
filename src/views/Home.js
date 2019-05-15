@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Carousel} from 'antd-mobile';
-import {getSwiperData} from '../api'
+import { Carousel,List } from 'antd-mobile';
+import { getSwiperData} from '../api';
+const Item = List.Item;
+const Brief = Item.Brief;
 
 export class Home extends Component {
   constructor(props) {
@@ -45,6 +47,19 @@ export class Home extends Component {
             </div>
           ))}
         </Carousel>
+      
+        {/* 推荐商品 */}
+        <List renderHeader={() => '推荐商品'}>
+          {this.state.imglist.map(val => (
+            <Item
+            key={val.id}
+             thumb={val.img_url}           
+            >{val.title}
+            </Item>
+          ))}
+       
+       
+      </List>
       </div>
     )
   }
